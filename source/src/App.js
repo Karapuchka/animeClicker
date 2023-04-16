@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+import Count from './components/count/Count.js'
 
 import './App.scss';
 
@@ -6,7 +8,7 @@ function App() {
 
   return (
     <div className='wrapper'>
-        Hello
+        <Count name={'name'} />
     </div>
   )
 }

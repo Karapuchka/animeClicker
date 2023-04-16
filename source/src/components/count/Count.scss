@@ -1,0 +1,160 @@
+.count{
+
+    width: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    &__btn-score{
+
+        width: 100%;
+        height: 300px;
+
+        background: url('./images/btn-icon.png') no-repeat center center/ cover;
+
+        margin-bottom: 32px;
+
+        cursor: pointer;
+    }
+
+    &__btn-score--active{
+
+        animation: btn-score-show 1.3s ease-out;
+    }
+
+    &__btn-realism{
+
+        width: 35px;
+        height: 20px;
+
+        border: 1px solid black;
+        border-radius: 20px;
+
+        position: relative;
+
+        &__circle{
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 20px;
+            height: 100%;
+
+            border-radius: 50%;
+
+            background-color: black;
+
+            transition: all .7s ease;
+
+            cursor: pointer;
+        }
+
+        &__circle--active{
+
+            transition: all .7s ease;
+
+            left: 45%;
+
+            background-color: rgb(255, 50, 31);
+        }
+    }
+
+    &__text{
+
+        font-weight: 600;
+        font-size: 24px;
+
+        margin-bottom: 20px;
+    }
+
+    &__text--weight{
+
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+}
+
+@keyframes btn-score-show {
+
+    0%{
+        transform: rotate(10deg);
+    }
+
+
+    20%{
+        transform: rotate(-10deg);
+    }
+
+    40%{
+        transform: rotate(10deg);
+    }
+
+    60%{
+        transform: rotate(-10deg);
+    }
+
+    80%{
+        transform: rotate(10deg);
+    }
+
+    100%{
+        transform: rotate(0);
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .count{
+
+        width: 500px;
+        
+        &__btn-score{
+    
+            height: 500px;
+    
+        }
+    
+        &__text{
+
+            font-weight: 600;
+            font-size: 24px;
+    
+            margin-bottom: 20px;
+        }
+    
+        &__text--weight{
+    
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .count{
+
+        width: 400px;
+        
+        &__btn-score{
+    
+            height: 400px;
+    
+        }
+    
+        &__text{
+
+            font-weight: 600;
+            font-size: 20px;
+    
+            margin-bottom: 20px;
+        }
+    
+        &__text--weight{
+    
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+    }
+}
