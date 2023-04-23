@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import useScound from 'use-sound';
 import {motion} from 'framer-motion';
 

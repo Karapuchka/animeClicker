@@ -1,0 +1,98 @@
+#icon-default{
+    background: url('../../resources/images/avatar/default.svg') no-repeat center center/cover;
+    background-size: 50%;
+}
+
+.user-setting{
+
+    align-self: flex-end;
+
+    width: 60px;
+    height: 60px;
+
+    position: relative;
+
+    &__glimpse{
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden;
+
+        border-radius: 50%;
+        border: 1px solid #434343;
+
+        &__line{
+
+            position: absolute;
+            top: 20px;
+            left: 10px;
+
+
+            opacity: 0;
+    
+            width: 10px;
+            height: 180%;
+    
+            background: linear-gradient(45deg, #dedede, #ffffff);
+            
+            backdrop-filter: blur(50px);
+        }
+    }
+
+    &__icon{
+
+        width: 100%;
+        height: 100%;
+    }
+
+    &__modal{
+
+        position: absolute;
+        top: 120%;
+        left: -140%;
+
+        width: 210px;
+
+        background-color: #484848;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        &__text{
+
+            width: 100%;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 16px;
+
+            color: #fff;
+
+        }
+
+        &__nick{
+            
+            background-color: #616161;
+
+            font-weight: 500;
+
+            margin: 0;
+        }
+
+        &__btn{
+
+            background-color: transparent;
+            border: 0;
+        }
+    }
+}

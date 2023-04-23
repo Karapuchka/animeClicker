@@ -8,12 +8,6 @@
     min-height: 100vh;
     min-width: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-
     font-family: 'Montserrat';
 
     position: relative;
@@ -36,7 +30,7 @@
 
 .cursor-default{
     border-radius: 50%;
-    border: 1px solid rgb(37, 37, 37);
+    border: 1px solid #252525;
 
     width: 16px;
     height: 16px;
