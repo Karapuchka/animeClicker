@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
 
 import Count from './components/count/Count.js'
+import Preloader from './components/preloader/Preloader.js';
 
 import './App.scss';
 
 function App() {
 
-  const [person, setPerson] = useState('none') //Хранит в себе информацию о выбранном персонаже
+  const [cursor, setCursor] = useState('default');
+
+  const changeCursor = (value)=>{
+    setCursor(cursor => value)
+  }
 
   return (
     <div className='wrapper'>
-        <Count name={'name'} />
-        <Cursor person={person}/>
+        <Preloader />
+        <Count name={'name'} textForTitle={'Этот мир был одарён взрывами'} iconForBtnScore={'meg'}/>
+        <Cursor person={cursor}/>
     </div>
   )
 }
@@ -31,17 +37,18 @@ function Cursor({person}){
       })
     })
 
-    // Меняет катинку "курсора" при клике
+  }, []);
+
+  // Меняет катинку "курсора" при клике
     const changeClass = ()=>{
       setCursorPointer(cursorPointer => !cursorPointer);
     }
 
-    window.addEventListener('mousedown', changeClass);
-    window.addEventListener('mouseup', changeClass);    
+  window.onmousedown = changeClass;
 
-  }, []);
+  window.onmouseup = changeClass;
 
-  return <div className={`cursor ${cursorPointer ? 'cursor-meg-pointer' : 'cursor-meg'}`} style={{left: cursorPosition.x - 16, top: cursorPosition.y - 8,}}></div>
+  return <div className={`cursor ${cursorPointer ? `cursor-${person}-pointer` : `cursor-${person}`}`} style={{left: cursorPosition.x - 16, top: cursorPosition.y - 8,}}></div>
 }
 
 export default App;

@@ -15,6 +15,8 @@
 
 
     font-family: 'Montserrat';
+
+    position: relative;
 }
 
 .cursor{
@@ -26,8 +28,32 @@
     top: 0;
     left: 0;
 
+    z-index: 9999;
+
     pointer-events: none;
 
+}
+
+.cursor-default{
+    border-radius: 50%;
+    border: 1px solid rgb(37, 37, 37);
+
+    width: 16px;
+    height: 16px;
+
+    transition: transform .2s ease-in;
+}
+
+.cursor-default-pointer{
+
+    border-radius: 50%;
+    border: 1px solid rgb(37, 37, 37);
+
+    width: 16px;
+    height: 16px;
+
+    transform: scale(1.5);
+    transition: transform .2s ease-out;
 }
 
 .cursor-meg{

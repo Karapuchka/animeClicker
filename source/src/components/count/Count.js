@@ -4,7 +4,7 @@ import useScound from 'use-sound';
 import explosion from "./mp3/explosion.mp3";
 import './Count.scss';
 
-function Count() {
+function Count({textForTitle, iconForBtnScore}) {
 
     const [score, setScore] = useState(0); // Счетчик
 
@@ -30,9 +30,9 @@ function Count() {
     return(
         <div className='count'>
 
-            <div onClick={()=> updateScore()} onPointerDown={music} className={`count__btn-score ${classBtnScore ? 'count__btn-score--active' : ''}`}></div>
+            <div onClick={()=> updateScore()} onPointerDown={music} id={`btn-${iconForBtnScore}`} className={`count__btn-score ${classBtnScore ? 'count__btn-score--active' : ''}`}></div>
 
-            <div className='count__text'>Этот мир был одарён взрывами {score}</div>
+            <div className='count__text'>{textForTitle} {score}</div>
             
             <div className='count__text count__text--weight'>Включить реализм</div>
 
