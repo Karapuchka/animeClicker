@@ -3,7 +3,7 @@ import './Preloader.scss';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence  } from "framer-motion"
 
-function Preloader(){
+function Preloader(cursor){
     
     const [life, setLife] = useState(false);
 

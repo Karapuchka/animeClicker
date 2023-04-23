@@ -1,44 +1,70 @@
 import {useState, useEffect} from 'react';
 import useScound from 'use-sound';
+import {motion} from 'framer-motion';
 
-import explosion from "./mp3/explosion.mp3";
+import explosion from "../../resources/music/explosion.mp3";
 import './Count.scss';
 
 function Count({textForTitle, iconForBtnScore}) {
 
     const [score, setScore] = useState(0); // Счетчик
 
-    const [classBtnScore, setClassBtnScore] = useState(false); // Для смены класса кнопки с картинкой
+    const [music] = useScound(explosion); // Функция для воспроизведения звука
 
-    const [classBtnRealism, setClassBtnRealism] = useState(false); // Для смены класса кнопки с реализмом
+    const [styleResBtn, setStyleResBtn] = useState({style: {background: 'black', x: 0,}, active: false}); // Изначальные стили для анимации кнопки "Реализм"
+    
+    const replaceStyleResBtn = ()=>{ // Стили анимации для кнопки "Реализм"
 
-    const [music] = useScound(explosion);
+        if(styleResBtn.active){
+            setStyleResBtn({
+                style: {
+                    background: '#000000',
+                    x: 0,
+                },
+                active: false,
+            });
+        } else {
+            setStyleResBtn({
+                style: {
+                    background: '#c84d20',
+                    x: 15,
+                },
+                active: true,
+            });
+        }
+    }
+    
+    const [styleMainBtn, setStyleMainBtn] = useState({rotate: 0, scale: 1});
 
-    const updateScore = ()=>{
+    const replaceStyleMainBtn = ()=>{
+        setStyleMainBtn({
+            rotate: [0, -10, 10, 0],
+            scale: [1, 1.1, 1, 1],
+        })
+    }
 
-        setClassBtnScore(classBtnScore => !classBtnScore);
+    const updateScore = ()=>{ // Обновление счетчика
 
         setScore(score => score + 1);
-
-        if(classBtnScore){
-            setTimeout(()=>{
-                setClassBtnScore(classBtnScore => !classBtnScore);
-            }, 200);
-        }
+        
+        setStyleMainBtn({
+            rotate: 0,
+            scale: 1,
+        })
     }
 
     return(
         <div className='count'>
 
-            <div onClick={()=> updateScore()} onPointerDown={music} id={`btn-${iconForBtnScore}`} className={`count__btn-score ${classBtnScore ? 'count__btn-score--active' : ''}`}></div>
+            <motion.div onTapStart={updateScore} onTap={replaceStyleMainBtn} animate={styleMainBtn} transition={{duration: 1, times: [.25, .5, 0.75, 1], ease: 'easeInOut',}} onPointerDown={music} id={`btn-${iconForBtnScore}`} className='count__btn-score'></motion.div>
 
             <div className='count__text'>{textForTitle} {score}</div>
             
             <div className='count__text count__text--weight'>Включить реализм</div>
 
-            <div className='count__btn-realism'>
-                <span onClick={()=> setClassBtnRealism(classBtnRealism => !classBtnRealism)} className={`count__btn-realism__circle ${classBtnRealism ? 'count__btn-realism__circle--active' : '' }`}></span>
-            </div>
+            <motion.div onTap={replaceStyleResBtn} className='count__btn-realism'>
+                <motion.span whileHover={{opacity: .8}} animate={styleResBtn.style} transition={{duration: .1}} className='count__btn-realism__circle'></motion.span>
+            </motion.div>
 
         </div>
     )

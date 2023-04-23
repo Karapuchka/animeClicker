@@ -1,5 +1,5 @@
 #btn-meg{
-    background: url('./images/btn-icon.png') no-repeat center center/ cover;
+    background: url('../../resources/images/btn/meg.png') no-repeat center center/ cover;
 }
 
 .count{
@@ -18,11 +18,6 @@
 
         margin-bottom: 32px;
 
-    }
-
-    &__btn-score--active{
-
-        animation: btn-score-show 1.3s ease-out;
     }
 
     &__btn-realism{
@@ -52,14 +47,6 @@
 
         }
 
-        &__circle--active{
-
-            transition: all .7s ease;
-
-            left: 45%;
-
-            background-color: rgb(255, 50, 31);
-        }
     }
 
     &__text{
@@ -74,34 +61,6 @@
 
         font-weight: 400;
         margin-bottom: 10px;
-    }
-}
-
-@keyframes btn-score-show {
-
-    0%{
-        transform: rotate(10deg);
-    }
-
-
-    20%{
-        transform: rotate(-10deg);
-    }
-
-    40%{
-        transform: rotate(10deg);
-    }
-
-    60%{
-        transform: rotate(-10deg);
-    }
-
-    80%{
-        transform: rotate(10deg);
-    }
-
-    100%{
-        transform: rotate(0);
     }
 }
 
