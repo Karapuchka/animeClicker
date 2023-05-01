@@ -16,7 +16,9 @@
 
 .cursor-default{
     border-radius: 50%;
-    background-color: #252525;
+    background-color: #fffcfc;
+
+    border: 3px solid 252525;
 
     width: 16px;
     height: 16px;
@@ -27,7 +29,8 @@
 .cursor-default-pointer{
 
     border-radius: 50%;
-    background-color: #252525;
+    background-color: #fffcfc;
+    border: 3px solid 252525;
 
     width: 16px;
     height: 16px;

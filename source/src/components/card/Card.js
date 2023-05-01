@@ -3,9 +3,9 @@ import useScound from 'use-sound';
 import {motion} from 'framer-motion';
 
 import explosion from "../../resources/music/explosion.mp3";
-import './Count.scss';
+import './card.scss';
 
-function Count({textForTitle, iconForBtnScore}) {
+function Card({textForTitle, iconForBtnScore}) {
 
     const [score, setScore] = useState(0); // Счетчик
 
@@ -70,4 +70,4 @@ function Count({textForTitle, iconForBtnScore}) {
     )
 }
 
-export default Count;
+export default Card;

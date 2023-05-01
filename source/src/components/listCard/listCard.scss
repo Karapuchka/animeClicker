@@ -1,0 +1,92 @@
+#meg{
+    background: url('../../resources/images/icon/meg.jpg') no-repeat center center/cover;
+}
+
+#kaz{
+    background: url('../../resources/images/icon/kaz-none.jpg') no-repeat center center/cover;
+}
+
+#dark{
+    background: url('../../resources/images/icon/dark-none.jpg') no-repeat center center/cover;
+}
+
+.list-card{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 90%;
+    height: 90%;
+
+    list-style: none;
+
+    &__item{
+
+        width: 300px;
+        height: 300px;
+
+        border: 3px solid black;
+
+        border-radius: 30px;
+
+        position: relative;
+
+        filter: grayscale(1);
+        
+        transition: all 1s ease;
+
+        &__title{
+
+            user-select: none;
+
+            margin: 0;
+
+            background-color: rgba($color: #FEFEFE, $alpha: .2);
+
+            backdrop-filter: blur(4px);
+
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border: 1px solid rgba($color: #FEFEFE, $alpha: .2);
+
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+
+            opacity: 0;
+
+            width: 100%;
+            height: 64px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            font-size: 40px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 1px black, 2px -2px black, -2px 2px black, -2px -2px black;
+            
+            transition: all .7s ease;
+        }
+    }
+
+    &__item:hover{
+
+        transform: translateY(-10px);
+        
+        filter: grayscale(0);
+
+        transition: all 1s ease;
+
+        .list-card__item__title{
+
+            bottom: 0;
+
+            opacity: 1;
+
+            transition: all .7s ease;
+        }
+    }
+}
