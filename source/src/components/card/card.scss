@@ -1,0 +1,49 @@
+#meg-btn{
+    background: url('../../resources/images/btn/meg.png') no-repeat center center/cover;
+}
+
+.card{
+    width: 95%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    position: relative;
+
+    &__btn-exit{
+
+        position: absolute;
+        top: 5%;
+        right: 10%;
+
+        width: 36px;
+        height: 36px;
+
+        cursor: pointer;
+        
+        &__left, &__right{
+
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: 2px;
+            height: 35px;
+            background-color: black;
+        }
+    }
+
+    &__text{
+        font-size: 24px;
+    }
+
+    &__btn-hero{
+        width: 400px;
+        height: 400px;
+
+        cursor: pointer;
+    }
+}
