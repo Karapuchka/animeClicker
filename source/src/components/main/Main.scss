@@ -6,4 +6,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &__btn-exit{
+
+        position: relative;
+        top: -40%;
+        right: -50%;
+
+        width: 30px;
+        height: 30px;
+
+        &__left, &__right{
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background-color: #000;
+        }
+    }
 }
