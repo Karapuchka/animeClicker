@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './card.scss';
 
 
-function Card({hero, text, music}){
+function Card({hero, text, music, clouseCard}){
 
     const [count, setCount] = useState(0);
 
@@ -36,20 +36,22 @@ function Card({hero, text, music}){
     }
 
     return (
-        <section className='card'>
-            <motion.div className='card__btn-exit'>
-                <motion.span animate={variants.animateRight} transition={variants.transition} className='card__btn-exit__left'></motion.span>
-                <motion.span animate={variants.animateLeft} transition={variants.transition} className='card__btn-exit__right'></motion.span>
-            </motion.div>
-            <div id={`${hero}-btn`} onClick={play} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></div>
-            <div className='card__text'>{text} {count}</div>
-        </section>
+        <AnimatePresence>
+            <motion.section className='card' exit={{opacity: 0}} transition={{duration: .7}}>
+                <motion.div whileHover={{scale: 1.1}} onClick={()=> clouseCard('null')} transition={{duration: .3}} className='card__btn-exit'>
+                    <motion.span animate={variants.animateRight} transition={variants.transition} className='card__btn-exit__left'></motion.span>
+                    <motion.span animate={variants.animateLeft} transition={variants.transition} className='card__btn-exit__right'></motion.span>
+                </motion.div>
+                <div id={`${hero}-btn`} onClick={play} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></div>
+                <div className='card__text'>{text} {count}</div>
+            </motion.section>
+        </AnimatePresence>
     )
 }
 
-/* Доделать анимацию при наведении на кнопку выхода
+/* 
     Доделать анимацию при нажатии на кнопку перса
-    Доделать анимацию при удалении компонента
+    Доделать анимацию при удалении компонента (начал, но нужно допелить)
     Сделать смену персов
     Добавить других персов
     Добавить шкалу

@@ -28,7 +28,7 @@ function App() {
     case 'meg':
       return (
         <motion.div animate={{background: '#fff'}} className='wrapper'>
-          <Card hero={infoHero[0].id} text={infoHero[0].text} music={infoHero[0].music}/>
+          <Card hero={infoHero[0].id} text={infoHero[0].text} music={infoHero[0].music} clouseCard={onOpenCard}/>
         </motion.div>
       )
       break;
@@ -36,7 +36,7 @@ function App() {
     case 'kaz':
       return (
         <motion.div animate={{background: '#fff'}} className='wrapper'>
-          <Card hero={infoHero[1].id} text={infoHero[1].text} music={infoHero[1].music}/>
+          <Card hero={infoHero[1].id} text={infoHero[1].text} music={infoHero[1].music} clouseCard={onOpenCard}/>
         </motion.div>
       )
     break;
@@ -44,7 +44,7 @@ function App() {
     case 'dark':
       return (
         <motion.div animate={{background: '#fff'}} className='wrapper'>
-          <Card hero={infoHero[2].id} text={infoHero[2].text} music={infoHero[2].music}/>
+          <Card hero={infoHero[2].id} text={infoHero[2].text} music={infoHero[2].music} clouseCard={onOpenCard}/>
         </motion.div>
       )
     break;

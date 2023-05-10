@@ -6,6 +6,8 @@
     width: 95%;
     height: 100vh;
 
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,9 +43,16 @@
     }
 
     &__btn-hero{
-        width: 400px;
-        height: 400px;
+        width: 500px;
+        height: 500px;
 
         cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card__btn-hero{
+        width: 280px;
+        height: 280px;
     }
 }
