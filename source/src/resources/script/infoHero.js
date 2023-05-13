@@ -11,13 +11,13 @@ const linfoHero = [
         id: 'kaz',
         name: 'Казумусик',
         text: 'В этом мире совершено краж ;): ',
-        music: explosion,
+        music: 'null',
     }, 
     {
         id: 'dark',
         name: 'Даркнесс',
         text: 'Этот мир был "защищён": ',
-        music: explosion,
+        music: 'null',
     }, 
 ];
 

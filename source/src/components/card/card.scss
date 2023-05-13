@@ -2,6 +2,16 @@
     background: url('../../resources/images/btn/meg.png') no-repeat center center/cover;
 }
 
+#sidebar-meg{
+    .sidebar-scale__line{
+        background-color: #d43916;
+
+        &__img{
+            background: url('../../resources/images/rest/head-cat-meg.png') no-repeat center center/cover;
+        }
+    }
+}
+
 .card{
     width: 95%;
     height: 100vh;
@@ -9,16 +19,24 @@
     margin: 0 auto;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
 
-    position: relative;
+    &__main-content{
+
+        flex: 1 1 auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    
+        position: relative;
+    }
 
     &__btn-exit{
 
         position: absolute;
-        top: 5%;
+        top: 10%;
         right: 10%;
 
         width: 36px;
@@ -48,6 +66,69 @@
 
         cursor: pointer;
     }
+}
+
+.sidebar{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100%;
+
+    position: relative;
+    
+}
+
+.sidebar-scale{
+
+    position: relative;
+
+    width: 300px;
+    height: 15px;
+
+    border: 1px solid gray;
+
+    &__line{
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        transform-origin: left;
+        transform: scaleX(1);
+
+        &__img{
+
+            position:absolute;
+            top: -15px;
+            right: -15px;
+
+            width: 40px;
+            height: 40px;
+
+            border: 0;
+        }
+    }
+
+    &__count{
+
+        position: absolute;
+        top: 20px;
+        left: 0;
+
+        font-weight: 600;
+    }
+
+}
+
+.list-hero{
+    width: 300px;
+
 }
 
 @media screen and (max-width: 600px) {
