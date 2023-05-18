@@ -3,12 +3,13 @@
 }
 
 #sidebar-meg{
-    .sidebar-scale__line{
-        background-color: #d43916;
 
-        &__img{
-            background: url('../../resources/images/rest/head-cat-meg.png') no-repeat center center/cover;
-        }
+    .sidebar-scale__indicator__line--show{
+        background-color: #d43916;   
+    }
+
+    .sidebar-scale__indicator__line__img{
+        background: url('../../resources/images/rest/head-cat-meg.png') no-repeat center center/cover;
     }
 }
 
@@ -88,30 +89,46 @@
     width: 300px;
     height: 15px;
 
-    border: 1px solid gray;
-
-    &__line{
+    &__indicator{
 
         position: absolute;
-        top: 0;
+        top: -100%;
         left: 0;
 
-        width: 100%;
-        height: 100%;
+        width: 110%;
+        height: 330%;
 
-        transform-origin: left;
-        transform: scaleX(1);
+        overflow-x: hidden;
 
-        &__img{
+        &__line{
 
-            position:absolute;
-            top: -15px;
-            right: -15px;
+            position: absolute;
+            top: 30%;
+            left: 2%;
+    
 
-            width: 40px;
-            height: 40px;
+            width: 90%;
+            height: 30%;
 
-            border: 0;
+            border: 1px solid gray;
+        }
+
+        &__line--show{
+
+            left: -275px;
+            z-index: 99;
+
+            .sidebar-scale__indicator__line__img{
+                width: 40px;
+                height: 40px;
+
+                border: 0;
+
+                position: absolute;
+                top: -130%;
+                right: -8%;
+
+            }
         }
     }
 
@@ -119,7 +136,7 @@
 
         position: absolute;
         top: 20px;
-        left: 0;
+        left: 5%;
 
         font-weight: 600;
     }

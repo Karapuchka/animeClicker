@@ -4,7 +4,7 @@ const linfoHero = [
     {
         id: 'meg',
         name: 'Мегумин',
-        text: 'Этот мир благославлён взрывам: ',
+        text: 'Этот мир благославлён взрывами: ',
         music: explosion,
     }, 
     {

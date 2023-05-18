@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+
 import detect from './resources/script/detect.js';
 import infoHero from './resources/script/infoHero.js'
 
