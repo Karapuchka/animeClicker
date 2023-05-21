@@ -1,11 +1,5 @@
 let countClick = {
 
-    score: {
-        'meg':  Number(window.localStorage.getItem('meg')),
-        'kaz':  Number(window.localStorage.getItem('kaz')),
-        'dark': Number(window.localStorage.getItem('dark')),
-    },
-
     validHeros: function(array){
         for (let i = 0; i < array.length; i++) {
             
@@ -25,6 +19,48 @@ let countClick = {
         }
 
         window.localStorage.setItem(hero, value);
+    },
+
+    achievements: {
+
+        'meg': {
+
+            100: function(width, height){
+                return <iframe width={width} height={height} src="https://www.youtube-nocookie.com/embed/x6THwTryQlc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            },
+
+            300: function(width, height){
+                return <iframe width={width} height={height} src="https://www.youtube-nocookie.com/embed/AsGy6hQ5Ap4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            },
+
+            500: function(width, height){
+                return <iframe width={width} height={height} src="https://www.youtube.com/embed/cakvds6Wgh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            },
+
+            800: function(width, height){
+                return <iframe width={width} height={height} src="https://www.youtube.com/embed/XqNsnO3gQ1Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            },
+
+            1000: function(width, height){
+                return <iframe width={width} height={height} src="https://www.youtube.com/embed/jar1LTxxAeM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            },
+        },
+
+        'kaz': {
+            100: '',
+            300: '',
+            500: '',
+            800: '',
+            1000: '',
+        } , 
+
+        'dark': {
+            100: '',
+            300: '',
+            500: '',
+            800: '',
+            1000: '',
+        },
     },
 }
 

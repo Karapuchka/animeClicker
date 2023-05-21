@@ -112,7 +112,7 @@ function Card({hero, text, music, clouseCard}){
 
 function MainBtn({hero, text, music, funcIndicatro, remainderClick}){
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(Number(window.localStorage.getItem(hero)));
 
     const [btnMainShow, setBtnMainShow] = useState({animate: {opacity: 1, y: 0, rotate: 0}, transition: {duration: 0.7, delay: 0.2}});
 
