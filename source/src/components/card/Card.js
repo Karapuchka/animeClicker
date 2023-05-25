@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useSound from 'use-sound';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import countClick from '../../resources/script/countClick.js';
+import ModalAchiev from '../modalAchiev/ModalAchiev.js';
 
 import './card.scss';
 
@@ -10,7 +11,7 @@ countClick.validHeros(['meg', 'kaz', 'dark']);
 
 function Card({hero, text, music, clouseCard}){
 
-    const [remainderClick, setRemainderClick] = useState(100);
+    const [remainderClick, setRemainderClick] = useState();
 
     const [lifeCard, setLifeCard] = useState(true);
 
@@ -18,10 +19,43 @@ function Card({hero, text, music, clouseCard}){
 
     const [lineImgShow, setLineImgShow] = useState({rotate: 0});
 
+    const [achievShow, setAchievShow] = useState(false);
+
+    useEffect(()=>{
+
+        let countHero = Number(window.localStorage.getItem(hero));
+
+        if(countHero < 100){
+
+            setRemainderClick(100 - (countHero));
+
+        } else if(countHero < 300){
+
+            setRemainderClick(300 - (countHero - 100));
+
+        } else if(countHero < 500){
+
+            setRemainderClick(500 - (countHero - 300));
+
+        } else if(countHero < 800){
+
+            setRemainderClick(800 - (countHero - 500));
+
+        } else if(countHero < 1000){
+
+            setRemainderClick(1000 - (countHero - 800));
+
+        } else if (countHero > 1000){
+
+            setRemainderClick(Infinity);
+        }
+    })
+
     const showIndivator = ()=>{
+
         let objLine = Object.assign(lineShow);
-    
-        objLine.x = Number(Number((270 / 100).toFixed(1)) + Number(lineShow.x.toFixed(1)));
+
+        objLine.x = Number(Number((270 / remainderClick).toFixed(1)) + Number(lineShow.x.toFixed(1)));
 
         setLineShow(objLine);
 
@@ -40,6 +74,8 @@ function Card({hero, text, music, clouseCard}){
         setLineImgShow(objImg);
 
         setRemainderClick(remainderClick => remainderClick - 1);
+
+        console.log(objLine);
     }
 
     const onClouseCard = ()=>{

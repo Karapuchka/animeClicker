@@ -1,11 +1,12 @@
 import {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
+import { PropTypes } from 'prop-types';
 
 import countClick from '../../resources/script/countClick.js'
 
 import './modalAchiev.scss';
 
-function ModalAchiev({hero}){
+function ModalAchiev({hero, score}){
 
     const [lifeModal, setLifeModal] = useState(true);
 
@@ -22,5 +23,7 @@ function ModalAchiev({hero}){
        */
     );
 }
+
+
 
 export default ModalAchiev;
