@@ -23,39 +23,75 @@ function Card({hero, text, music, clouseCard}){
 
     useEffect(()=>{
 
-        let countHero = Number(window.localStorage.getItem(hero));
+        let countHero = window.localStorage.getItem(hero);
+
+        let objLine = Object.assign(lineShow);
 
         if(countHero < 100){
 
             setRemainderClick(100 - (countHero));
 
+            objLine.x = 270 / 100 * countHero;
+
+            setLineShow(objLine);
+
         } else if(countHero < 300){
 
-            setRemainderClick(300 - (countHero - 100));
+            setRemainderClick((300 - 100) - (countHero - 100));
+
+            objLine.x = 270 / 100 / 3 * countHero;
+
+            setLineShow(objLine);
 
         } else if(countHero < 500){
 
-            setRemainderClick(500 - (countHero - 300));
+            setRemainderClick((500 - 300) - (countHero - 300));
+
+            objLine.x = 270 / 100 / 5 * countHero;
+
+            setLineShow(objLine);
 
         } else if(countHero < 800){
 
-            setRemainderClick(800 - (countHero - 500));
+            setRemainderClick((800 - 500) - (countHero - 500));
+
+            objLine.x = 270 / 100 / 8 * countHero;
+
+            setLineShow(objLine);
 
         } else if(countHero < 1000){
 
-            setRemainderClick(1000 - (countHero - 800));
+            setRemainderClick((1000 - 800) - (countHero - 800));
+
+            objLine.x = 270 / 100 / 10 * countHero;
+
+            setLineShow(objLine);
 
         } else if (countHero > 1000){
 
             setRemainderClick(Infinity);
+
         }
+
     })
 
     const showIndivator = ()=>{
 
         let objLine = Object.assign(lineShow);
 
-        objLine.x = Number(Number((270 / remainderClick).toFixed(1)) + Number(lineShow.x.toFixed(1)));
+        let step = 0;
+
+        if(window.localStorage.getItem(hero) < 100){
+            step = 1;
+        } else if (window.localStorage.getItem(hero) < 300) {
+            step = 3;
+        }else if (window.localStorage.getItem(hero) < 500) {
+            step = 5;
+        }else if (window.localStorage.getItem(hero) < 800) {
+            step = 8; 
+        }
+
+        objLine.x = 270 / 100 / step + Number(lineShow.x);
 
         setLineShow(objLine);
 
