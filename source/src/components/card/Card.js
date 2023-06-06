@@ -77,6 +77,11 @@ function Card({hero, text, music, clouseCard}){
 
     const showIndivator = ()=>{
 
+        if(window.localStorage.getItem(hero) == 100){
+            setAchievShow(achievShow => !achievShow)
+            console.log(achievShow);
+        }
+
         let objLine = Object.assign(lineShow);
 
         let step = 0;
@@ -111,7 +116,12 @@ function Card({hero, text, music, clouseCard}){
 
         setRemainderClick(remainderClick => remainderClick - 1);
 
-        console.log(objLine);
+    }
+
+    const onShowModalAchiev = ()=>{
+        setAchievShow(achievShow => !achievShow);
+
+        console.log(achievShow);
     }
 
     const onClouseCard = ()=>{
@@ -140,46 +150,52 @@ function Card({hero, text, music, clouseCard}){
         },
     }
 
-    return (
-        <AnimatePresence>{
-            lifeCard && (
-                <motion.section className='card' exit={{opacity: 0}} transition={{duration: .6}}>
-
-                    <aside>
-                        <div className='list-hero'></div>
-                    </aside>
-                   
-                    <MainBtn hero={hero} text={text} music={music} funcIndicatro={showIndivator} remainderClick={remainderClick}/>
-
-                   <aside className='sidebar'>
-                        <motion.div whileHover={{scale: 1.1}} onClick={()=> onClouseCard()} transition={{duration: .3}} className='card__btn-exit'>
-            
-                            <motion.span animate={variantsBtnExit.animateRight} transition={variantsBtnExit.transition} className='card__btn-exit__left'></motion.span>
-                            <motion.span animate={variantsBtnExit.animateLeft} transition={variantsBtnExit.transition} className='card__btn-exit__right'></motion.span>
-
-                        </motion.div>
-
-                        <motion.div id={`sidebar-${hero}`} className='sidebar-scale'>
-                            
-                            <motion.div className='sidebar-scale__indicator'>
-
-                                <motion.div animate={lineShow} transition={{duration: .4}} className='sidebar-scale__indicator__line sidebar-scale__indicator__line--show'>
-                                    <motion.div animate={lineImgShow} transition={{duration: .4}} className='sidebar-scale__indicator__line__img'></motion.div>
-                                </motion.div>
-
-                                <motion.div className='sidebar-scale__indicator__line'></motion.div>
-
-                            </motion.div>
-
-                            <p className='sidebar-scale__count'>Кликов для достижения цели: {remainderClick}</p> {/* Сделать отображение количества оставшихся кликов */}
+    if(achievShow){
+        return (
+            <ModalAchiev hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={()=> onShowModalAchiev}/>
+        )
+    } else {
+        return (
+            <AnimatePresence>{
+                lifeCard && (
+                    <motion.section className='card' exit={{opacity: 0}} transition={{duration: .6}}>
     
-                        </motion.div>
-                   </aside>
-
-                </motion.section>
-            )}  
-        </AnimatePresence>
-    )
+                        <aside>
+                            <div className='list-hero'></div>
+                        </aside>
+                       
+                        <MainBtn hero={hero} text={text} music={music} funcIndicatro={showIndivator} remainderClick={remainderClick}/>
+    
+                       <aside className='sidebar'>
+                            <motion.div whileHover={{scale: 1.1}} onClick={()=> onClouseCard()} transition={{duration: .3}} className='card__btn-exit'>
+                
+                                <motion.span animate={variantsBtnExit.animateRight} transition={variantsBtnExit.transition} className='card__btn-exit__left'></motion.span>
+                                <motion.span animate={variantsBtnExit.animateLeft} transition={variantsBtnExit.transition} className='card__btn-exit__right'></motion.span>
+    
+                            </motion.div>
+    
+                            <motion.div id={`sidebar-${hero}`} className='sidebar-scale'>
+                                
+                                <motion.div className='sidebar-scale__indicator'>
+    
+                                    <motion.div animate={lineShow} transition={{duration: .4}} className='sidebar-scale__indicator__line sidebar-scale__indicator__line--show'>
+                                        <motion.div animate={lineImgShow} transition={{duration: .4}} className='sidebar-scale__indicator__line__img'></motion.div>
+                                    </motion.div>
+    
+                                    <motion.div className='sidebar-scale__indicator__line'></motion.div>
+    
+                                </motion.div>
+    
+                                <p className='sidebar-scale__count'>Кликов для достижения цели: {remainderClick}</p> {/* Сделать отображение количества оставшихся кликов */}
+        
+                            </motion.div>
+                       </aside>
+    
+                    </motion.section>
+                )}  
+            </AnimatePresence>
+        )
+    }
 }
 
 function MainBtn({hero, text, music, funcIndicatro, remainderClick}){
@@ -221,8 +237,8 @@ function MainBtn({hero, text, music, funcIndicatro, remainderClick}){
             countClick.setCount(hero, Number(window.localStorage.getItem(hero)) + 1)
 
             funcIndicatro();
+
         }
-        /* Код для вывода достижения */
     }   
 
     switch (hero) {

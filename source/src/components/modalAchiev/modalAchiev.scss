@@ -1,3 +1,53 @@
 .modal-achiev{
-    
+
+    position: relative;
+
+    background: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__btn-exit{
+        position: absolute;
+        top: 4%;
+        right: 1%;
+
+        width: 35px;
+        height: 35px;
+
+        cursor: pointer;
+    }
+
+    &__btn-exit::before, &__btn-exit::after{
+
+        content: '';
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: red;
+        
+        transition: all .7s ease;
+    }
+
+    &__btn-exit::before{
+        transform: rotate(45deg);
+    }
+
+    &__btn-exit::after{
+
+        transform: rotate(-45deg)
+        
+    }
+
+    &__btn-exit:hover::before, &__btn-exit:hover::after{
+        background-color: rgb(253, 253, 253);
+
+        transition: all .7s ease;
+    }
 }
