@@ -20,6 +20,50 @@ let countClick = {
 
         window.localStorage.setItem(hero, value);
     },
+
+    achievements: {
+
+        'meg': {
+    
+            100: "https://www.youtube-nocookie.com/embed/x6THwTryQlc",
+    
+            300: "https://www.youtube-nocookie.com/embed/AsGy6hQ5Ap4",
+    
+            500: "https://www.youtube.com/embed/cakvds6Wgh8",
+    
+            800: "https://www.youtube.com/embed/XqNsnO3gQ1Q",
+    
+            1000: "https://www.youtube.com/embed/jar1LTxxAeM",
+        },
+    
+        'kaz': {
+    
+            100: '',
+    
+            300: '',
+    
+            500: '',
+    
+            800: '',
+    
+            1000: '',
+    
+        } , 
+    
+        'dark': {
+    
+            100: '',
+    
+            300: '',
+    
+            500: '',
+    
+            800: '',
+    
+            1000: '',
+            
+        },
+    }
 }
 
 export default countClick;

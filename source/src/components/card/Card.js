@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import countClick from '../../resources/script/countClick.js';
 import ModalAchiev from '../modalAchiev/ModalAchiev.js';
+import AchievPanel from '../achievPanel/AchievPanel.js';
 
 import './card.scss';
 
@@ -22,7 +23,6 @@ function Card({hero, text, music, clouseCard}){
     const [achievShow, setAchievShow] = useState(false);
 
     useEffect(()=>{
-
         let countHero = window.localStorage.getItem(hero);
 
         let objLine = Object.assign(lineShow);
@@ -161,8 +161,8 @@ function Card({hero, text, music, clouseCard}){
                 lifeCard && (
                     <motion.section className='card' exit={{opacity: 0}} transition={{duration: .6}}>
     
-                        <aside>
-                            <div className='list-hero'></div>
+                        <aside className='sidebar'>
+                            <AchievPanel hero={hero} score={window.localStorage.getItem(hero)} />
                         </aside>
                        
                         <MainBtn hero={hero} text={text} music={music} funcIndicatro={showIndivator} remainderClick={remainderClick}/>
@@ -246,10 +246,10 @@ function MainBtn({hero, text, music, funcIndicatro, remainderClick}){
         case 'meg':
 
             return(
-                <div className='card__main-content'>
+                <section className='card__main-content'>
                     <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
                     <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
-                </div>                
+                </section>                
             )
 
             break;
@@ -257,10 +257,10 @@ function MainBtn({hero, text, music, funcIndicatro, remainderClick}){
         case 'kaz': 
 
             return(
-                <div className='card__main-content'>
+                <section className='card__main-content'>
                     <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
                     <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
-                </div>
+                </section>
             )
 
             break;
@@ -268,10 +268,10 @@ function MainBtn({hero, text, music, funcIndicatro, remainderClick}){
         case 'dark': 
 
             return(
-                <div className='card__main-content'>
+                <section className='card__main-content'>
                     <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
                     <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
-                </div>
+                </section>
             )
             break;
 
