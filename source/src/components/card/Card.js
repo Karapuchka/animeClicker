@@ -77,22 +77,23 @@ function Card({hero, text, music, clouseCard}){
 
     const showIndivator = ()=>{
 
-        if(window.localStorage.getItem(hero) == 100){
-            setAchievShow(achievShow => !achievShow)
-            console.log(achievShow);
+        let heroScore = window.localStorage.getItem(hero);
+
+        if(heroScore == 100 || heroScore == 300 || heroScore == 500 || heroScore == 800 || heroScore == 1000){
+            onShowModalAchiev();
         }
 
         let objLine = Object.assign(lineShow);
 
         let step = 0;
 
-        if(window.localStorage.getItem(hero) < 100){
+        if(heroScore < 100){
             step = 1;
-        } else if (window.localStorage.getItem(hero) < 300) {
+        } else if (heroScore < 300) {
             step = 3;
-        }else if (window.localStorage.getItem(hero) < 500) {
+        }else if (heroScore < 500) {
             step = 5;
-        }else if (window.localStorage.getItem(hero) < 800) {
+        }else if (heroScore < 800) {
             step = 8; 
         }
 
@@ -152,7 +153,7 @@ function Card({hero, text, music, clouseCard}){
 
     if(achievShow){
         return (
-            <ModalAchiev hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={()=> onShowModalAchiev}/>
+            <ModalAchiev hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={onShowModalAchiev}/>
         )
     } else {
         return (
