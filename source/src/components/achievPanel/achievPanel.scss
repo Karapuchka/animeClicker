@@ -1,3 +1,25 @@
+#meg-100{
+    background: url('../../resources/images/rest/meg-100.jpg') no-repeat center center/cover;
+}
+
+#meg-300{
+    background: url('../../resources/images/rest/meg-300.jpg') no-repeat center center/cover;
+}
+
+#meg-500{
+    background: url('../../resources/images/rest/meg-500.jpg') no-repeat center center/cover;
+}
+
+#meg-800{
+    background: url('../../resources/images/rest/meg-800.jpg') no-repeat center center/cover;
+}
+
+#meg-1000{
+    background: url('../../resources/images/rest/meg-1000.jpg') no-repeat center center/cover;
+}
+
+
+
 .hero-achiev{
 
     height: 100%;
@@ -19,7 +41,7 @@
 
             position: relative;
 
-            &__block-panel{
+            &__use-panel{
 
                 position: absolute;
                 top: 0;
@@ -40,9 +62,29 @@
 
                     width: 25%;
                     height: 25%;
-    
+
                     background: url('../../resources/images/rest/doorLoock.svg') no-repeat center center/cover;
                     background-size: 70%;
+                }
+
+                &__play{
+
+                    width: 35%;
+                    height: 35%;
+
+                    background: url('../../resources/images/rest/play-btn.svg') no-repeat center center/cover;
+                    background-size: 100%;
+                }
+            }
+
+            &__images{
+
+                width: 150px;
+                height: 150px;
+
+                &__img{
+                    width: 100%;
+                    height: 100%;
                 }
             }
         }
