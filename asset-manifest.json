@@ -1,20 +1,33 @@
 {
   "files": {
-    "main.css": "/forVadim/static/css/main.35a15333.css",
-    "main.js": "/forVadim/static/js/main.c55159f0.js",
-    "static/js/845.a5c4dead.chunk.js": "/forVadim/static/js/845.a5c4dead.chunk.js",
-    "static/media/meg.png": "/forVadim/static/media/meg.bc6ecfb05ab2b512f4cd.png",
-    "static/media/meg.jpg": "/forVadim/static/media/meg.b6066fb9dffb24b2e87c.jpg",
-    "static/media/dark-none.jpg": "/forVadim/static/media/dark-none.0486c295100acb0e27ad.jpg",
-    "static/media/kaz-none.jpg": "/forVadim/static/media/kaz-none.302f6060034d8497570f.jpg",
-    "static/media/explosion.mp3": "/forVadim/static/media/explosion.ea5c4d2c9ba73a11776e.mp3",
-    "index.html": "/forVadim/index.html",
-    "main.35a15333.css.map": "/forVadim/static/css/main.35a15333.css.map",
-    "main.c55159f0.js.map": "/forVadim/static/js/main.c55159f0.js.map",
-    "845.a5c4dead.chunk.js.map": "/forVadim/static/js/845.a5c4dead.chunk.js.map"
+    "main.css": "/animeClicker/static/css/main.3ee2ce67.css",
+    "main.js": "/animeClicker/static/js/main.268eeb0c.js",
+    "static/js/845.a5c4dead.chunk.js": "/animeClicker/static/js/845.a5c4dead.chunk.js",
+    "static/media/1000.webm": "/animeClicker/static/media/1000.5915fd5505f047e178bc.webm",
+    "static/media/meg-100.webm": "/animeClicker/static/media/meg-100.f4cb99d444d5088164ee.webm",
+    "static/media/meg-800.webm": "/animeClicker/static/media/meg-800.e224ba35feffa01c15e9.webm",
+    "static/media/meg-500.webm": "/animeClicker/static/media/meg-500.104bd6cd8f7d935994ff.webm",
+    "static/media/meg-300.webm": "/animeClicker/static/media/meg-300.830aad38f1d265d116ea.webm",
+    "static/media/meg.png": "/animeClicker/static/media/meg.bc6ecfb05ab2b512f4cd.png",
+    "static/media/meg-300.jpg": "/animeClicker/static/media/meg-300.f38c04bce2d62e2ad414.jpg",
+    "static/media/meg-1000.jpg": "/animeClicker/static/media/meg-1000.2fb75f7200e7d2f4a99c.jpg",
+    "static/media/meg-800.jpg": "/animeClicker/static/media/meg-800.5c3aec505c072eccc557.jpg",
+    "static/media/meg.jpg": "/animeClicker/static/media/meg.b6066fb9dffb24b2e87c.jpg",
+    "static/media/meg-500.jpg": "/animeClicker/static/media/meg-500.c67677565f1768f6ae69.jpg",
+    "static/media/meg-100.jpg": "/animeClicker/static/media/meg-100.dc573640de164cb727a2.jpg",
+    "static/media/dark-none.jpg": "/animeClicker/static/media/dark-none.0486c295100acb0e27ad.jpg",
+    "static/media/kaz-none.jpg": "/animeClicker/static/media/kaz-none.302f6060034d8497570f.jpg",
+    "static/media/explosion.mp3": "/animeClicker/static/media/explosion.ea5c4d2c9ba73a11776e.mp3",
+    "static/media/head-cat-meg.png": "/animeClicker/static/media/head-cat-meg.9ae65756d3d16c307b3b.png",
+    "static/media/doorLoock.svg": "/animeClicker/static/media/doorLoock.7cb6dff3a2365972802c.svg",
+    "index.html": "/animeClicker/index.html",
+    "static/media/play-btn.svg": "/animeClicker/static/media/play-btn.482bd626b8b7aa588913.svg",
+    "main.3ee2ce67.css.map": "/animeClicker/static/css/main.3ee2ce67.css.map",
+    "main.268eeb0c.js.map": "/animeClicker/static/js/main.268eeb0c.js.map",
+    "845.a5c4dead.chunk.js.map": "/animeClicker/static/js/845.a5c4dead.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.35a15333.css",
-    "static/js/main.c55159f0.js"
+    "static/css/main.3ee2ce67.css",
+    "static/js/main.268eeb0c.js"
   ]
 }
