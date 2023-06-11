@@ -1,121 +1,156 @@
-#btn-meg{
-    background: url('../../resources/images/btn/meg.png') no-repeat center center/ cover;
+#meg-btn{
+    background: url('../../resources/images/btn/meg.png') no-repeat center center/cover;
 }
 
-.count{
+#sidebar-meg{
 
-    width: 300px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-    &__btn-score{
-
-        width: 100%;
-        height: 300px;
-
-        margin-bottom: 32px;
-
-        cursor: pointer;
+    .sidebar-scale__indicator__line--show{
+        background-color: #d43916;   
     }
 
-    &__btn-realism{
+    .sidebar-scale__indicator__line__img{
+        background: url('../../resources/images/rest/head-cat-meg.png') no-repeat center center/cover;
+    }
+}
 
-        width: 35px;
-        height: 20px;
+.card{
+    width: 95%;
+    height: 100vh;
 
-        border: 1px solid black;
-        border-radius: 20px;
+    margin: 0 auto;
 
+    display: flex;
+    align-items: center;
+
+    &__main-content{
+
+        flex: 1 1 auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    
         position: relative;
+    }
 
-        &__circle{
+    &__btn-exit{
+
+        position: absolute;
+        top: 10%;
+        right: 10%;
+
+        width: 36px;
+        height: 36px;
+
+        cursor: pointer;
+        
+        &__left, &__right{
 
             position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
 
-            width: 20px;
-            height: 100%;
-
-            border-radius: 50%;
-
+            width: 2px;
+            height: 35px;
             background-color: black;
-
-            transition: all .7s ease;
-
-        cursor: pointer;
         }
-
     }
 
     &__text{
+        font-size: 24px;
+    }
+
+    &__btn-hero{
+        width: 500px;
+        height: 500px;
+
+        cursor: pointer;
+    }
+}
+
+.sidebar{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100%;
+
+    position: relative;
+    
+}
+
+.sidebar-scale{
+
+    position: relative;
+
+    width: 300px;
+    height: 15px;
+
+    &__indicator{
+
+        position: absolute;
+        top: -100%;
+        left: 0;
+
+        width: 110%;
+        height: 330%;
+
+        overflow-x: hidden;
+
+        &__line{
+
+            position: absolute;
+            top: 30%;
+            left: 2%;
+    
+
+            width: 90%;
+            height: 30%;
+
+            border: 1px solid gray;
+        }
+
+        &__line--show{
+
+            left: -275px;
+            z-index: 99;
+
+            .sidebar-scale__indicator__line__img{
+                width: 40px;
+                height: 40px;
+
+                border: 0;
+
+                position: absolute;
+                top: -130%;
+                right: -8%;
+
+            }
+        }
+    }
+
+    &__count{
+
+        position: absolute;
+        top: 20px;
+        left: 5%;
 
         font-weight: 600;
-        font-size: 24px;
-
-        margin-bottom: 20px;
     }
 
-    &__text--weight{
-
-        font-weight: 400;
-        margin-bottom: 10px;
-    }
 }
 
-@media screen and (max-width: 2000px) {
-    .count{
+.list-hero{
+    width: 300px;
 
-        width: 500px;
-        
-        &__btn-score{
-    
-            height: 500px;
-    
-        }
-    
-        &__text{
-
-            font-weight: 600;
-            font-size: 24px;
-    
-            margin-bottom: 20px;
-        }
-    
-        &__text--weight{
-    
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-    }
 }
 
-@media screen and (max-width: 1400px) {
-    .count{
-
-        width: 400px;
-        
-        &__btn-score{
-    
-            height: 400px;
-    
-        }
-    
-        &__text{
-
-            font-weight: 600;
-            font-size: 20px;
-    
-            margin-bottom: 20px;
-        }
-    
-        &__text--weight{
-    
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
+@media screen and (max-width: 600px) {
+    .card__btn-hero{
+        width: 280px;
+        height: 280px;
     }
 }
