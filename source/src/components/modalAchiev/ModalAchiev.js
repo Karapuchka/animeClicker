@@ -40,13 +40,18 @@ let achievements = {
     }, 
 }
 
-function ModalAchiev({hero, score, fucnShowAchiev}){
+function ModalAchiev({hero, score, fucnShowAchiev, funcScoreItem}){
+
+    if(score == 0){
+        score = window.localStorage.getItem(hero);
+    }
 
     const [lifeModal, setLifeModal] = useState(true);
 
     const [startVide, setStartVideo] = useState(false);
 
     const onClouseModal = ()=>{
+        funcScoreItem(0);
         fucnShowAchiev();
         setLifeModal(lifeModal => !lifeModal);
     }

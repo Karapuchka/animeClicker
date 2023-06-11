@@ -22,6 +22,8 @@ function Card({hero, text, music, clouseCard}){
 
     const [achievShow, setAchievShow] = useState(false);
 
+    const [scoreItem, setScoreItem] = useState(0);
+
     useEffect(()=>{
         let countHero = window.localStorage.getItem(hero);
 
@@ -121,8 +123,6 @@ function Card({hero, text, music, clouseCard}){
 
     const onShowModalAchiev = ()=>{
         setAchievShow(achievShow => !achievShow);
-
-        console.log(achievShow);
     }
 
     const onClouseCard = ()=>{
@@ -153,7 +153,7 @@ function Card({hero, text, music, clouseCard}){
 
     if(achievShow){
         return (
-            <ModalAchiev hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={onShowModalAchiev}/>
+            <ModalAchiev hero={hero} score={scoreItem} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
         )
     } else {
         return (
@@ -162,7 +162,7 @@ function Card({hero, text, music, clouseCard}){
                     <motion.section className='card' exit={{opacity: 0}} transition={{duration: .6}}>
     
                         <aside className='sidebar'>
-                            <AchievPanel hero={hero} score={window.localStorage.getItem(hero)} />
+                            <AchievPanel hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
                         </aside>
                        
                         <MainBtn hero={hero} text={text} music={music} funcIndicatro={showIndivator} remainderClick={remainderClick}/>

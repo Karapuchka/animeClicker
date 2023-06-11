@@ -5,34 +5,36 @@ import countClick from "../../resources/script/countClick.js";
 
 import './achievPanel.scss';
 
-function AchievPanel({hero, score}){
+function AchievPanel({hero, score, fucnShowAchiev, funcScoreItem}){
 
     const [lifePanel, setLifePanel] = useState(true);
 
     const [arrayLinksAchiev, setArrayLinksAchiev] = useState([['100', true], ['300', true], ['500', true], ['800', true], ['1000', true]]);
 
     useEffect(()=>{
-       switch (score) {
-        case 100:
-            setArrayLinksAchiev([['100', false], ['300', true], ['500', true], ['800', true], ['1000', true]])
-            break;
-       
-        case 300:
-            setArrayLinksAchiev([['100', false], ['300', false], ['500', true], ['800', true], ['1000', true]])
-            break;
 
-        case 500:
-            setArrayLinksAchiev([['100', false], ['300', false], ['500', false], ['800', true], ['1000', true]])
-            break;
-       
-        case 800:
-            setArrayLinksAchiev([['100', false], ['300', false], ['500', false], ['800', false], ['1000', true]])
-            break;
+        if(score >= 1000){
 
-        case 1000:
-            setArrayLinksAchiev([['100', false], ['300', false], ['500', false], ['800', false], ['1000', false]])
-            break;
-       }
+            setArrayLinksAchiev([['100', false], ['300', false], ['500', false], ['800', false], ['1000', false]]);
+
+        } else if (score >= 800) {
+
+            setArrayLinksAchiev([['100', false], ['300', false], ['500', false], ['800', false], ['1000', true]]);
+
+        }else if (score >= 500) {
+            
+            setArrayLinksAchiev([['100', false], ['300', false], ['500', false], ['800', true], ['1000', true]]);
+
+
+        }else if (score >= 300) {
+
+            setArrayLinksAchiev([['100', false], ['300', false], ['500', true], ['800', true], ['1000', true]]);
+
+        }else if (score >= 100) {
+
+            setArrayLinksAchiev([['100', false], ['300', true], ['500', true], ['800', true], ['1000', true]]);
+
+        }
     });
     
     return(
@@ -40,7 +42,7 @@ function AchievPanel({hero, score}){
             lifePanel && (
                 <motion.div className="hero-achiev">
                     <ul className="hero-achiev__list">
-                        {arrayLinksAchiev.map(item => <ItemAchiev key={hero.toString() + item[0].toString()} id={`${hero.toString()}-${item[0].toString()}`} blockAchiev={item[1]} />)}
+                        {arrayLinksAchiev.map(item => <ItemAchiev key={hero.toString() + item[0].toString()} id={`${hero.toString()}-${item[0].toString()}`} score={+item[0]} blockAchiev={item[1]} fucnShowAchiev={fucnShowAchiev} funcScoreItem={funcScoreItem}/>)}
                     </ul>
                 </motion.div>
             )}
@@ -48,7 +50,7 @@ function AchievPanel({hero, score}){
     )
 }
 
-function ItemAchiev({id, blockAchiev}){
+function ItemAchiev({id, blockAchiev, score, fucnShowAchiev, funcScoreItem}){
 
     const [lifeItemAchiev, setLifeItemAchiev] = useState(true);
 
@@ -88,6 +90,11 @@ function ItemAchiev({id, blockAchiev}){
         }
     }
 
+    const onShowAchiev = ()=>{
+        fucnShowAchiev()
+        funcScoreItem(score)
+    }
+
     if(blockAchiev){
 
         return(
@@ -110,7 +117,7 @@ function ItemAchiev({id, blockAchiev}){
         return(
             <AnimatePresence>{
                 lifeItemAchiev && (
-                    <motion.li className="hero-achiev__list__item">
+                    <motion.li onClick={()=> onShowAchiev()} className="hero-achiev__list__item">
 
                         <div onMouseDown={() => onScalePlayBtn()} onMouseUp={()=> onScalePlayBtn()} className="hero-achiev__list__item__use-panel">
                             <motion.span whileTap={{scale: [1, .8, 1]}} animate={animatePlayBtn} transition={transitionPlayBtn} className="hero-achiev__list__item__use-panel__play"></motion.span>
