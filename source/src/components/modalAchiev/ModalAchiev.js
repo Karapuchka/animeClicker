@@ -3,13 +3,17 @@ import {motion, AnimatePresence} from 'framer-motion';
 import { PropTypes } from 'prop-types';
 import ReactPlayer from 'react-player';
 
-import countClick from '../../resources/script/countClick.js';
-
 import meg100Video from '../../resources/videos/meg-100.webm'
 import meg300Video from '../../resources/videos/meg-300.webm'
 import meg500Video from '../../resources/videos/meg-500.webm'
 import meg800Video from '../../resources/videos/meg-800.webm'
 import video1000 from '../../resources/videos/1000.webm'
+
+import kaz100Video from '../../resources/videos/kaz-100.webm'
+import kaz300Video from '../../resources/videos/kaz-300.webm'
+import kaz500Video from '../../resources/videos/kaz-500.webm'
+import kaz800Video from '../../resources/videos/kaz-800.webm'
+import kaz1000Video from '../../resources/videos/kaz-1000.webm'
 
 import './modalAchiev.scss';
 
@@ -24,11 +28,11 @@ let achievements = {
     }, 
 
     'kaz': {
-        100: '',
-        300: '',
-        500: '',
-        800: '',
-        1000: video1000,
+        100: kaz100Video,
+        300: kaz300Video,
+        500: kaz500Video,
+        800: kaz800Video,
+        1000: kaz1000Video,
     }, 
 
     'dark': {

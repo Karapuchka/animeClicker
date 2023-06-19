@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import countClick from "../../resources/script/countClick.js";
-
 import './achievPanel.scss';
 
 function AchievPanel({hero, score, fucnShowAchiev, funcScoreItem}){

@@ -2,6 +2,12 @@
     background: url('../../resources/images/btn/meg.png') no-repeat center center/cover;
 }
 
+#kaz-btn{
+    background: url('../../resources/images/btn/kaz.png') no-repeat center center/cover;
+    background-size: 70%;
+}
+
+
 #sidebar-meg{
 
     .sidebar-scale__indicator__line--show{
@@ -10,6 +16,22 @@
 
     .sidebar-scale__indicator__line__img{
         background: url('../../resources/images/rest/head-cat-meg.png') no-repeat center center/cover;
+    }
+}
+
+#sidebar-kaz{
+
+    .sidebar-scale__indicator__line--show{
+        background-color: #1698d4;   
+    }
+
+    .sidebar-scale__indicator__line__img{
+
+        width: 40px;
+        height: 40px;
+
+
+        background: url('../../resources/images/rest/akva-for-kaz.png') no-repeat center center/cover;
     }
 }
 
