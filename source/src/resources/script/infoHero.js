@@ -1,5 +1,6 @@
 import explosion from '../../resources/music/explosion.mp3';
 import steal from '../../resources/music/steal.mp3'
+import darkSpeak from '../../resources/music/dark.mp3'
 
 const linfoHero = [
     {
@@ -18,7 +19,7 @@ const linfoHero = [
         id: 'dark',
         name: 'Даркнесс',
         text: 'Этот мир был "защищён": ',
-        music: 'null',
+        music: darkSpeak,
     }, 
 ];
 

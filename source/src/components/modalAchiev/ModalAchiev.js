@@ -15,6 +15,12 @@ import kaz500Video from '../../resources/videos/kaz-500.webm'
 import kaz800Video from '../../resources/videos/kaz-800.webm'
 import kaz1000Video from '../../resources/videos/kaz-1000.webm'
 
+import dark100Video from '../../resources/videos/dark-100.webm'
+import dark300Video from '../../resources/videos/dark-300.webm'
+import dark500Video from '../../resources/videos/dark-500.webm'
+import dark800Video from '../../resources/videos/dark-800.webm'
+import dark1000Video from '../../resources/videos/dark-1000.webm'
+
 import './modalAchiev.scss';
 
 let achievements = {
@@ -36,11 +42,11 @@ let achievements = {
     }, 
 
     'dark': {
-        100: '',
-        300: '',
-        500: '',
-        800: '',
-        1000: video1000,
+        100: dark100Video,
+        300: dark300Video,
+        500: dark500Video,
+        800: dark800Video,
+        1000: dark1000Video,
     }, 
 }
 
