@@ -87,3 +87,52 @@
         }
     }
 }
+
+.slider-card--mobile{
+
+    #kaz-icon{
+        background: url('../../resources/images/icon/kaz-mobile.jpg') no-repeat center center/cover;
+    }
+    
+    #dark-icon{
+        background: url('../../resources/images/icon/dark-mobile.jpg') no-repeat center center/cover;
+    }
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+    
+    justify-content: center;
+    flex-direction: column;
+
+    .slider-card__item{
+        width: 100%;
+        height: 33.33%;
+
+        border: 1px solid black;
+        border-radius: 0;
+
+        filter: grayscale(0);
+    }
+
+    .slider-card__item__text{
+            height: 60px;
+
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            backdrop-filter: blur(2px);
+
+            border: 0;
+            border-radius: 0;
+
+            color: #fff;
+            text-shadow: 2px 2px black, -2px -2px black, 2px -2px black, -2px 2px black;
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+            transition: all .7s ease;
+    }
+
+}

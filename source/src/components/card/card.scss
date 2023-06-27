@@ -11,7 +11,6 @@
     background: url('../../resources/images/btn/dark.png') no-repeat center center/cover;
 }
 
-
 #sidebar-meg{
 
     .sidebar-scale__indicator__line--show{
@@ -190,9 +189,94 @@
 
 }
 
+.card-mobile{
+    flex-direction: column;
+
+    position: relative;
+
+    &__main-content{
+        margin-top: 10%;
+    }
+
+    &__navigator{
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 10px 10px 0 0;
+
+        width: 90%;
+
+        &__burger{
+            width: 35px;
+            height: 18px;
+
+            z-index: 110;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            &__line{
+
+                display: block;
+                width: 100%;
+                height: 3px;
+
+                background-color: black;
+            }
+        }
+    }
+
+    &__btn-exit{
+        position: relative;
+        top: 0;
+        right: 5%;
+    }
+}
+
+.sidebar-mobile{
+    opacity: 0;
+    position: fixed;
+    z-index: 100;
+
+    width: 100%;
+}
+
 @media screen and (max-width: 600px) {
     .card__btn-hero{
-        width: 280px;
-        height: 280px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .card-mobile__text{
+        margin-top: 50px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .card__btn-hero{
+        width: 350px;
+        height: 350px;
+    }
+
+    .card-mobile__text{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .card__btn-hero{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .card__btn-hero{
+        width: 250px;
+        height: 250px;
     }
 }

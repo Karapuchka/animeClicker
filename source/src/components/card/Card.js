@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import countClick from '../../resources/script/countClick.js';
 import ModalAchiev from '../modalAchiev/ModalAchiev.js';
 import AchievPanel from '../achievPanel/AchievPanel.js';
+import mobileDetect from '../../resources/script/detect.js';
 
 import './card.scss';
 
@@ -23,6 +24,10 @@ function Card({hero, text, music, clouseCard}){
     const [achievShow, setAchievShow] = useState(false);
 
     const [scoreItem, setScoreItem] = useState(0);
+
+    const [showBurgerBtn, setShowBurgerBtn] = useState({lineOne: {rotate: 0, x: '0', y: '5%'}, lineTwo: {opacity: 1}, lineThree:{ rotate: 0, x: '0', y: '5%'},});
+
+    const [showMobileAchievPanel, setShowMobileAchievPanel] = useState({x: -100, opacity: 0});
 
     useEffect(()=>{
         let countHero = window.localStorage.getItem(hero);
@@ -134,6 +139,24 @@ function Card({hero, text, music, clouseCard}){
         }, 800);
     }
 
+    const onShowBurgerBtn = ()=>{
+        if(showBurgerBtn.lineOne.rotate == 0){
+
+            let x = document.querySelector('.card-mobile__btn-exit').offsetLeft;
+
+            setShowBurgerBtn({lineOne: {rotate: 45, x: x, y: 8}, lineTwo: {opacity: 0, x: x}, lineThree: {rotate: -45, x: x, y: -8}});
+            
+            setShowMobileAchievPanel({x: 0, opacity: 1});
+
+        } else {
+
+            setShowBurgerBtn({lineOne: {rotate: 0, x: 0, y: 0}, lineTwo: {opacity: 1, x: 0}, lineThree: {rotate: 0, x: 0, y: 0}});
+            
+            setShowMobileAchievPanel({x: -400, opacity: 0});
+            
+        }
+    }
+
     const variantsBtnExit = {
         animateLeft: {
             rotate: [0, 0, 45],
@@ -151,51 +174,111 @@ function Card({hero, text, music, clouseCard}){
         },
     }
 
-    if(achievShow){
-        return (
-            <ModalAchiev hero={hero} score={scoreItem} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
-        )
-    } else {
-        return (
-            <AnimatePresence>{
-                lifeCard && (
-                    <motion.section className='card' exit={{opacity: 0}} transition={{duration: .6}}>
-    
-                        <aside className='sidebar'>
-                            <AchievPanel hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
-                        </aside>
-                       
-                        <MainBtn hero={hero} text={text} music={music} funcIndicatro={showIndivator} remainderClick={remainderClick}/>
-    
-                       <aside className='sidebar'>
-                            <motion.div whileHover={{scale: 1.1}} onClick={()=> onClouseCard()} transition={{duration: .3}} className='card__btn-exit'>
-                
-                                <motion.span animate={variantsBtnExit.animateRight} transition={variantsBtnExit.transition} className='card__btn-exit__left'></motion.span>
-                                <motion.span animate={variantsBtnExit.animateLeft} transition={variantsBtnExit.transition} className='card__btn-exit__right'></motion.span>
-    
-                            </motion.div>
-    
-                            <motion.div id={`sidebar-${hero}`} className='sidebar-scale'>
-                                
-                                <motion.div className='sidebar-scale__indicator'>
-    
-                                    <motion.div animate={lineShow} transition={{duration: .4}} className='sidebar-scale__indicator__line sidebar-scale__indicator__line--show'>
-                                        <motion.div animate={lineImgShow} transition={{duration: .4}} className='sidebar-scale__indicator__line__img'></motion.div>
-                                    </motion.div>
-    
-                                    <motion.div className='sidebar-scale__indicator__line'></motion.div>
-    
+    if(mobileDetect){
+        if(achievShow){
+            return (
+                <ModalAchiev hero={hero} score={scoreItem} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
+            )
+        } else {
+            return (
+                <AnimatePresence>{
+                    lifeCard && (
+                        <motion.section className='card card-mobile' exit={{opacity: 0}} transition={{duration: .6}}>
+
+                            <section className='card-mobile__navigator'>
+
+                                <div onClick={()=> onShowBurgerBtn()} className='card-mobile__navigator__burger'>
+                                    <motion.span animate={showBurgerBtn.lineOne} transition={{duration: .7}} className='card-mobile__navigator__burger__line'></motion.span>
+                                    <motion.span animate={showBurgerBtn.lineTwo} transition={{duration: .7}} className='card-mobile__navigator__burger__line'></motion.span>
+                                    <motion.span animate={showBurgerBtn.lineThree} transition={{duration: .7}} className='card-mobile__navigator__burger__line'></motion.span>
+                                </div>
+
+                                <motion.div whileHover={{scale: 1.1}} onClick={()=> onClouseCard()} transition={{duration: .3}} className='card__btn-exit card-mobile__btn-exit'>
+                    
+                                    <motion.span animate={variantsBtnExit.animateRight} transition={variantsBtnExit.transition} className='card__btn-exit__left'></motion.span>
+                                    <motion.span animate={variantsBtnExit.animateLeft} transition={variantsBtnExit.transition} className='card__btn-exit__right'></motion.span>
+
                                 </motion.div>
-    
-                                <p className='sidebar-scale__count'>Кликов для достижения цели: {remainderClick}</p> {/* Сделать отображение количества оставшихся кликов */}
+
+                            </section>
         
-                            </motion.div>
-                       </aside>
-    
-                    </motion.section>
-                )}  
-            </AnimatePresence>
-        )
+                            <motion.aside animate={showMobileAchievPanel} transition={{duration: .7}} className='sidebar sidebar-mobile'>
+                                <AchievPanel hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
+                            </motion.aside>
+                           
+                            <MainBtn hero={hero} text={text} music={music} funcIndicatro={showIndivator} remainderClick={remainderClick}/>
+        
+                           <section className='sidebar'>
+                            
+                                <motion.div id={`sidebar-${hero}`} className='sidebar-scale'>
+                                    
+                                    <motion.div className='sidebar-scale__indicator'>
+        
+                                        <motion.div animate={lineShow} transition={{duration: .4}} className='sidebar-scale__indicator__line sidebar-scale__indicator__line--show'>
+                                            <motion.div animate={lineImgShow} transition={{duration: .4}} className='sidebar-scale__indicator__line__img'></motion.div>
+                                        </motion.div>
+        
+                                        <motion.div className='sidebar-scale__indicator__line'></motion.div>
+        
+                                    </motion.div>
+        
+                                    <p className='sidebar-scale__count'>Кликов для достижения цели: {remainderClick}</p>
+            
+                                </motion.div>
+                           </section>
+        
+                        </motion.section>
+                    )}  
+                </AnimatePresence>
+            )
+        }
+    } else {
+        if(achievShow){
+            return (
+                <ModalAchiev hero={hero} score={scoreItem} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
+            )
+        } else {
+            return (
+                <AnimatePresence>{
+                    lifeCard && (
+                        <motion.section className='card' exit={{opacity: 0}} transition={{duration: .6}}>
+        
+                            <aside className='sidebar'>
+                                <AchievPanel hero={hero} score={window.localStorage.getItem(hero)} fucnShowAchiev={onShowModalAchiev} funcScoreItem={setScoreItem}/>
+                            </aside>
+                           
+                            <MainBtn hero={hero} text={text} music={music} funcIndicatro={showIndivator} remainderClick={remainderClick}/>
+        
+                           <aside className='sidebar'>
+                                <motion.div whileHover={{scale: 1.1}} onClick={()=> onClouseCard()} transition={{duration: .3}} className='card__btn-exit'>
+                    
+                                    <motion.span animate={variantsBtnExit.animateRight} transition={variantsBtnExit.transition} className='card__btn-exit__left'></motion.span>
+                                    <motion.span animate={variantsBtnExit.animateLeft} transition={variantsBtnExit.transition} className='card__btn-exit__right'></motion.span>
+        
+                                </motion.div>
+        
+                                <motion.div id={`sidebar-${hero}`} className='sidebar-scale'>
+                                    
+                                    <motion.div className='sidebar-scale__indicator'>
+        
+                                        <motion.div animate={lineShow} transition={{duration: .4}} className='sidebar-scale__indicator__line sidebar-scale__indicator__line--show'>
+                                            <motion.div animate={lineImgShow} transition={{duration: .4}} className='sidebar-scale__indicator__line__img'></motion.div>
+                                        </motion.div>
+        
+                                        <motion.div className='sidebar-scale__indicator__line'></motion.div>
+        
+                                    </motion.div>
+        
+                                    <p className='sidebar-scale__count'>Кликов для достижения цели: {remainderClick}</p>
+            
+                                </motion.div>
+                           </aside>
+        
+                        </motion.section>
+                    )}  
+                </AnimatePresence>
+            )
+        }
     }
 }
 
@@ -245,34 +328,65 @@ function MainBtn({hero, text, music, funcIndicatro, remainderClick}){
     switch (hero) {
         case 'meg':
 
-            return(
-                <section className='card__main-content'>
-                    <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
-                    <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
-                </section>                
-            )
+            if(mobileDetect){
+                return(
+                    <section className='card__main-content card-mobile__main-content'>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero card-mobile__btn-hero'></motion.div>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text card-mobile__text'>{text} {count}</motion.div>
+                    </section>                
+                )
+            } else {
+                return(
+                    <section className='card__main-content'>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
+                    </section>                
+                )
+            }
 
             break;
 
         case 'kaz': 
 
-            return(
-                <section className='card__main-content'>
-                    <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
-                    <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
-                </section>
-            )
+            if(mobileDetect){
+                return(
+                    <section className='card__main-content card-mobile__main-content'>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero card-mobile__text'></motion.div>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text card-mobile__text'>{text} {count}</motion.div>
+                    </section>
+                )
+            } else {
+                return(
+                    <section className='card__main-content'>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
+                    </section>
+                )
+            }
+
+
 
             break;
 
         case 'dark': 
 
-            return(
-                <section className='card__main-content'>
-                    <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
-                    <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
-                </section>
-            )
+            if(mobileDetect){
+                return(
+                    <section className='card__main-content card-mobile__main-content'>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero card-mobile__text'></motion.div>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text card-mobile__text'>{text} {count}</motion.div>
+                    </section>
+                )
+            } else {
+
+                return(
+                    <section className='card__main-content'>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={btnMainShow.animate} transition={btnMainShow.transition} id={`${hero}-btn`} onPointerDown={()=> onChangeCount()} className='card__btn-hero'></motion.div>
+                        <motion.div initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{duration: .7, delay: .4}} className='card__text'>{text} {count}</motion.div>
+                    </section>
+                )
+            }
+
             break;
 
         default:

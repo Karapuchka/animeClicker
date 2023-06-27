@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import infoHero from '../../resources/script/infoHero.js'
 import { PropTypes } from 'prop-types';
 
+import infoHero from '../../resources/script/infoHero.js'
+import mobileDetect from '../../resources/script/detect.js';
+
 import './sliderCard.scss';
+
 
 function SliderCard({openCard}){
 
@@ -40,16 +43,31 @@ function SliderCard({openCard}){
         }
     }
 
-    return (
-        <AnimatePresence>
-            {lifeSlider && (
-                <motion.section initial={moveSlider.initial} animate={moveSlider.animate} exit={moveSlider.exit} transition={moveSlider.transition} className='slider-card'>
-                    {infoHero.map(item => <SliderCardItem key={item.id} title={item.name} hero={item.id} funcOpenCard={onChangeLife}/>)}
-                </motion.section>
-                )
-            }
-        </AnimatePresence>
-    )
+    if(mobileDetect){
+        return (
+            <AnimatePresence>
+                {lifeSlider && (
+                    <motion.section initial={moveSlider.initial} animate={moveSlider.animate} exit={moveSlider.exit} transition={moveSlider.transition} className='slider-card slider-card--mobile'>
+                        {infoHero.map(item => <SliderCardItem key={item.id} title={item.name} hero={item.id} funcOpenCard={onChangeLife}/>)}
+                    </motion.section>
+                    )
+                }
+            </AnimatePresence>
+        )
+    } else {
+        return (
+            <AnimatePresence>
+                {lifeSlider && (
+                    <motion.section initial={moveSlider.initial} animate={moveSlider.animate} exit={moveSlider.exit} transition={moveSlider.transition} className='slider-card'>
+                        {infoHero.map(item => <SliderCardItem key={item.id} title={item.name} hero={item.id} funcOpenCard={onChangeLife}/>)}
+                    </motion.section>
+                    )
+                }
+            </AnimatePresence>
+        )
+    }
+
+    
 }
 
 function SliderCardItem({title, hero, funcOpenCard}){
