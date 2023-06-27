@@ -27,7 +27,7 @@ function Card({hero, text, music, clouseCard}){
 
     const [showBurgerBtn, setShowBurgerBtn] = useState({lineOne: {rotate: 0, x: '0', y: '5%'}, lineTwo: {opacity: 1}, lineThree:{ rotate: 0, x: '0', y: '5%'},});
 
-    const [showMobileAchievPanel, setShowMobileAchievPanel] = useState({x: -100, opacity: 0});
+    const [showMobileAchievPanel, setShowMobileAchievPanel] = useState({x: '-100%', opacity: 0});
 
     useEffect(()=>{
         let countHero = window.localStorage.getItem(hero);
