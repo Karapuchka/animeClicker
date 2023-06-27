@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/animeClicker/static/css/main.0f80de4e.css",
-    "main.js": "/animeClicker/static/js/main.0e8bd050.js",
+    "main.js": "/animeClicker/static/js/main.bc98794c.js",
     "static/js/845.2a6feeb8.chunk.js": "/animeClicker/static/js/845.2a6feeb8.chunk.js",
     "static/media/1000.webm": "/animeClicker/static/media/1000.5915fd5505f047e178bc.webm",
     "static/media/kaz-500.webm": "/animeClicker/static/media/kaz-500.7c651553c48dbbc4f387.webm",
@@ -51,11 +51,11 @@
     "index.html": "/animeClicker/index.html",
     "static/media/play-btn.svg": "/animeClicker/static/media/play-btn.482bd626b8b7aa588913.svg",
     "main.0f80de4e.css.map": "/animeClicker/static/css/main.0f80de4e.css.map",
-    "main.0e8bd050.js.map": "/animeClicker/static/js/main.0e8bd050.js.map",
+    "main.bc98794c.js.map": "/animeClicker/static/js/main.bc98794c.js.map",
     "845.2a6feeb8.chunk.js.map": "/animeClicker/static/js/845.2a6feeb8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0f80de4e.css",
-    "static/js/main.0e8bd050.js"
+    "static/js/main.bc98794c.js"
   ]
 }
